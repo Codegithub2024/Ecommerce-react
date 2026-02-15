@@ -1,3 +1,7 @@
+# Secrets (Le plus important !)
+.env
+.env.local
+
 # Logs
 logs
 *.log
