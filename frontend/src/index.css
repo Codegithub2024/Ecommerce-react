@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+@import "tailwindcss";
+
+* {
+  @apply font-sans;
+}
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --shadow-card: 0 0 18px 0 rgba(0, 0, 0, 0.15);
+  --shadow-card-sm: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+  --background-image-img: url("./assets/linegrid.png");
+
+  --color-primary: #ffd700;
+  --breakpoint-medium: 1920px;
+}
+
+@layer utilities {
+  .max-w-7xl {
+    max-width: 1400px;
+  }
+}
+
+@layer base {
+  .input {
+    @apply rounded-full min-h-8 px-4 outline-none placeholder-shown:bg-neutral-50 bg-white focus:bg-white  transition-all duration-200 ring-1 ring-black/10 min-w-32 text-sm focus-within:ring-black flex-1 focus-within:shadow-[0_0_12px_0_rgb(0,0,0,0.1)];
+  }
+  .search {
+    @apply rounded-full min-h-8 px-4 outline-none placeholder-shown:bg-none focus:bg-white  transition-all duration-200 ring-1 ring-black/10 text-sm focus-within:ring-black flex-1 focus-within:shadow-[0_0_12px_0_rgb(0,0,0,0.1)];
+  }
+  .area {
+    @apply rounded-2xl resize-none py-2 min-h-8 px-4 outline-none placeholder-shown:bg-neutral-50 bg-white focus:bg-white transition-all duration-200 ring-1 ring-black/10 text-sm focus-within:ring-black flex-1 focus-within:shadow-[0_0_12px_0_rgb(0,0,0,0.1)];
+  }
+  .nav {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    a {
+      z-index: 10;
+      &.active {
+        anchor-name: --active;
+        color: black;
+      }
+      &:hover {
+        anchor-name: --hover;
+      }
+      &.active:hover {
+        anchor-name: --active;
+      }
+    }
+
+    .bubble {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50px;
+      position-anchor: --active;
+      top: anchor(top);
+      bottom: anchor(bottom);
+      left: anchor(left);
+      right: anchor(right);
+      position: absolute;
+      z-index: 5;
+      transition: all 0.2s ease;
+    }
+
+    .bubble-hover {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50px;
+      position-anchor: --hover;
+      top: anchor(top);
+      bottom: anchor(bottom);
+      left: anchor(left);
+      right: anchor(right);
+      position: absolute;
+      z-index: 1;
+      transition: all 0.2s ease;
+    }
+  }
+}
